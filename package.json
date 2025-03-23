@@ -27,7 +27,8 @@
   "dependencies": {
     "@floating-ui/dom": "1.4.4",
     "iconify-icon": "1.0.8",
-    "nanoid": "4.0.2"
+    "nanoid": "4.0.2",
+    "swiper": "11.2.6"
   },
   "devDependencies": {
     "@astrojs/image": "0.17.2",
