@@ -5,10 +5,9 @@ A fully customizable template to create your online (and paper) resume without w
 ## Tools Used
 
 - **Framework**: [Astro](https://astro.build/)
+- **Library**: [React.js](https://react.dev/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-
 <!-- - **Database**: [Supabase](https://supabase.com/) -->
-
 - **Animations**: [Framer Motion](https://framer.com/motion)
 - **Deployment**: [Netlify](https://netlify.app)
 - **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
