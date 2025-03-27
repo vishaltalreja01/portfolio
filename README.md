@@ -1,4 +1,4 @@
-# DevsCard
+# Vishal Kumar
 
 A fully customizable template to create your online (and paper) resume without writing a single line of code.
 
@@ -25,10 +25,10 @@ A fully customizable template to create your online (and paper) resume without w
 
 To learn how to set up your resume, go to:
 
-[https://devscard.gitbook.io/docs](https://devscard.gitbook.io/docs/setup-guide)
+[https://vishalkumar.gitbook.io/docs](https://vishalkumar.gitbook.io/docs/setup-guide)
 
 ## Example
 
 To see an example CV, visit the link below:
 
-[https://devscard.netlify.app](https://devscard.netlify.app/)
+[https://vishal-talreja.netlify.app](https://vishal-talreja.netlify.app/)
