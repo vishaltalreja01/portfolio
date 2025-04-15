@@ -32,7 +32,7 @@ const experienceSectionData = {
       role: 'Oracle Apex Developer',
       company: 'Pakistan State Oil (PSO)',
       image: import('@/assets/logos/pso-logo.png'),
-      dates: [new Date('2025-02'), null],
+      dates: [new Date('2024-11'), null],
       description: `
         - Building and maintaining dynamic web applications using Oracle Apex to meet requirements.
       `,
@@ -46,7 +46,7 @@ const experienceSectionData = {
       ],
     },
     {
-      role: 'React.js developer',
+      role: 'React Js developer',
       company: 'Kava Up LLC',
       image: import('@/assets/logos/kavaup-logo.jpg'),
       dates: [new Date('2023-12'), null],
