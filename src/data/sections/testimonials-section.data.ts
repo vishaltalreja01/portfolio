@@ -15,7 +15,7 @@ const testimonialsSectionData = {
       author: 'Sonny Stevenson',
       relation: 'CEO at Kava Up LLC',
       content:
-        'Mauris tincidunt at purus vehicula porta. Mauris eget mollis turpis. Sed iaculis rutrum pharetra. Vivamus risus quam, suscipit et semper ut, aliquet ut tellus. Donec quis auctor nunc.',
+        'Vishal is a talented developer who has a great eye for detail. During our contract with him, he performed execelent. I would highly recommend him to anyone looking for a developer.',
       links: [website({ url: 'https://rocketreach.co/sonny-stevenson-email_728678179' })],
     },
     {
