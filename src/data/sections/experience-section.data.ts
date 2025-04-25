@@ -49,7 +49,7 @@ const experienceSectionData = {
       role: 'React Js developer',
       company: 'Kava Up LLC',
       image: import('@/assets/logos/kavaup-logo.jpg'),
-      dates: [new Date('2023-12'), null],
+      dates: [new Date('2023-12'), new Date('2024-11')],
       description: `
         - Developed and optimized responsive web apps using React.js, Next.js, Tailwind CSS, and Material UI, achieving a 70% boost in user engagement.
         - Built dynamic forms using Formik and implemented animations with React Motion for enhanced user experiences.
