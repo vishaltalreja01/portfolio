@@ -7,20 +7,10 @@ A fully customizable template to create your online (and paper) resume without w
 - **Framework**: [Astro](https://astro.build/)
 - **Library**: [React.js](https://react.dev/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-<!-- - **Database**: [Supabase](https://supabase.com/) -->
 - **Animations**: [Framer Motion](https://framer.com/motion)
 - **Deployment**: [Netlify](https://netlify.app)
 - **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
-<!-- - **Plugins**: [rehype](https://github.com/rehypejs/rehype)
-- **Analytics**: [Google Analytics](https://analytics.google.com/analytics/web/)
-- [SWR](https://swr.vercel.app/)
-- [Email.js](https://www.emailjs.com/)
-- [React Toastify](https://github.com/fkhadra/react-toastify) -->
 
-> [!IMPORTANT]
-> This project will remain available but <ins>**won't receive updates**</ins>.
->
-> If you are searching for a great framework to build your resume, **[check out Zenith](https://github.com/KonradSzwarc/zenith)**. It's a new iteration of this project utilizing recent Astro version capabilities that will provide you with much more features and customizability.
 
 ## Features
 
