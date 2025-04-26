@@ -14,7 +14,7 @@ const educationSectionData = {
       title: 'BS Computer Science',
       institution: 'Mehran University of Engineering & Technology',
       image: import('@/assets/logos/muet-logo.png'),
-      dates: [new Date('2020.01'), new Date('2024.01')],
+      dates: [new Date('2019.12'), new Date('2023.12')],
       description:
         'Courses: Software and Hardware, Data Visualization, Business Intelligence, Digital Marketing, Time Series Analysis & Forecasting.',
       links: [website({ url: 'https://muet.edu.pk' })],

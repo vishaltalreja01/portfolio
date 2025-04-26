@@ -10,7 +10,6 @@ import {
   php,
   javascript,
   mysql,
-  reactQuery,
   tailwindCss,
   // typescript,
   oracle,
@@ -18,6 +17,7 @@ import {
   sql,
   strapi,
   materialUI,
+  typescript,
 } from '../helpers/skills';
 
 const experienceSectionData = {
@@ -58,7 +58,7 @@ const experienceSectionData = {
       `,
       tagsList: {
         title: 'Technologies',
-        tags: [react(), nextJs(), tailwindCss(), materialUI(), reactQuery(), strapi()],
+        tags: [nextJs(), react(), tailwindCss(), materialUI(), typescript(), strapi()],
       },
       links: [
         website({ url: 'https://www.kavaup.io' }),

@@ -14,7 +14,7 @@ export interface Props extends MainSection {}
 const { action, config, description, details, fullName, image, links, role, tags } = Astro.props;
 ---
 
-<SectionCard {...config} hideTitle>
+<SectionCard {...config} hideTitle className="mt-20 sm:mt-0">
   <div class="flex flex-col items-start gap-6 sm:flex-row">
     <div class="flex items-center gap-4 sm:flex-col">
       <Photo
