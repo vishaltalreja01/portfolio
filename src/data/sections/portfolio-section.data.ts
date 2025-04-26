@@ -53,6 +53,7 @@ const portfolioSectionData = {
           url: 'https://github.com/vishaltalreja01/melomusicplayer',
         },
       ],
+      screenshots: [{ src: import('@/assets/portfolio/project-1-screenshot-2.jpg'), alt: 'Second screenshot' }],
       description:
         'Ut ultricies tortor at sodales aliquam. Vivamus metus ante, fringilla nec ligula in, suscipit rhoncus mauris. Praesent hendrerit velit odio, at accumsan urna faucibus convallis.',
       tagsList: {
