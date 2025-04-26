@@ -28,6 +28,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sarina: ['Sarina', 'cursive'],
       },
     },
   },
