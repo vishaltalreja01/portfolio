@@ -9,11 +9,11 @@ const { icon, slug, title } = Astro.props;
 
 <a
   href={`#${slug}`}
-  class="inline-flex h-10 w-max items-center justify-center gap-2 rounded-lg px-2 transition"
+  class="mx-4 inline-flex h-10 w-max items-center justify-center gap-2 rounded-lg px-2 transition sm:mx-2"
   aria-label={`${title} section`}
 >
   <Icon name={icon} size={20} />
-  {title}
+  <span class="hidden text-sm font-semibold sm:block">{title}</span>
 </a>
 
 <style>
