@@ -8,7 +8,7 @@ import Photo from '@/components/photo.astro';
 import TagsList from '@/web/components/tags-list.astro';
 import Timestamp from '@/web/components/timestamp.astro';
 import Typography from '@/web/components/typography.astro';
-import Thumbnail from '@/web/components/thumbnail.astro';
+import ProjectThumbnail from '@/web/components/project-thumbnail.astro';
 
 export interface Props extends Project {
   screenshotsConfig?: PortfolioSection['config']['screenshots'];
@@ -25,8 +25,8 @@ const screenshotsTooltip = screenshotsConfig?.title || 'Screenshots';
 ---
 
 <div class="flex flex-col gap-6">
-  <div class="flex flex-row gap-4">
-    <Thumbnail src={image} alt={alt} size="large" />
+  <div class="flex flex-col gap-4 sm:flex-row">
+    <ProjectThumbnail src={image} alt={alt} size="large" />
     <div class="flex flex-col gap-6">
       <div class="flex gap-6">
         <div class="flex w-full flex-col gap-4">
