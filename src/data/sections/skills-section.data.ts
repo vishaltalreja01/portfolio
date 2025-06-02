@@ -11,6 +11,7 @@ import {
   mysql,
   nextJs,
   oracle,
+  oracleApex,
   php,
   react,
   sql,
@@ -45,6 +46,7 @@ const skillsSectionData = {
         sql({ level: 5 }),
         mysql({ level: 4 }),
         oracle({ level: 4 }),
+        oracleApex({ level: 3 }),
         supabase({ level: 3, description: 'Currently Learning' }),
         strapi({ level: 3 }),
         materialUI({ level: 3 }),
@@ -52,7 +54,7 @@ const skillsSectionData = {
     },
     {
       title: 'I want to learn',
-      skills: [nextJs(), astro(), supabase(), web3(), framerMotion()],
+      skills: [nextJs(), astro(), supabase(), framerMotion()],
     },
     {
       title: 'I speak',
