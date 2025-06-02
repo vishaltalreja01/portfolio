@@ -29,10 +29,10 @@ const experienceSectionData = {
   },
   jobs: [
     {
-      role: 'Oracle Apex Developer',
+      role: 'IT Mentee',
       company: 'Pakistan State Oil (PSO)',
       image: import('@/assets/logos/pso-logo.png'),
-      dates: [new Date('2024-11'), null],
+      dates: [new Date('2025-02'), null],
       description: `
         - Building and maintaining dynamic web applications using Oracle Apex to meet requirements.
       `,
