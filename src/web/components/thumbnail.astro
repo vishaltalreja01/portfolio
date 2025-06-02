@@ -5,13 +5,14 @@ import type { Photo as PhotoType } from '@/types/shared';
 interface Props {
   src?: PhotoType;
   alt: string;
-  size: 'large' | 'small';
+  size: 'large' | 'medium' | 'small';
 }
 
 const { src, alt, size } = Astro.props;
 
 const sizeToClass = /* tw */ {
   large: 'h-18 w-18',
+  medium: 'h-14 w-14',
   small: 'h-12 w-12',
 };
 ---
