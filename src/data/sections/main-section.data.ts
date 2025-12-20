@@ -11,7 +11,7 @@ const mainSectionData = {
   },
   image: import('@/assets/my-image.jpeg'),
   fullName: 'Vishal Kumar',
-  role: 'Frontend Developer',
+  role: 'Software Developer',
   details: [
     { label: 'Phone', value: '+92 335 3794273', url: 'tel:3353794273' },
     { label: 'Email', value: 'vishaltalreja01@gmail.com', url: 'mailto:vishaltalreja01@gmail.com' },
