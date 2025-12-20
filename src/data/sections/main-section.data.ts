@@ -13,13 +13,13 @@ const mainSectionData = {
   fullName: 'Vishal Kumar',
   role: 'Software Developer',
   details: [
-    { label: 'Phone', value: '+92 335 3794273', url: 'tel:3353794273' },
+    { label: 'Phone', value: '+39 353 212 4142', url: 'tel:+393532124142' },
     { label: 'Email', value: 'vishaltalreja01@gmail.com', url: 'mailto:vishaltalreja01@gmail.com' },
-    { label: 'From', value: 'Karachi, Pakistan' },
+    { label: 'From', value: 'Naples, Italy' },
     // { label: 'Salary range', value: '18 000 - 25 000 PLN' },
   ],
   pdfDetails: [
-    { label: 'Phone', value: '+92 335 3794273' },
+    { label: 'Phone', value: '+39 353 212 4142' },
     { label: 'Email', value: 'vishaltalreja01@gmail.com' },
     { label: 'LinkedIn', value: '/in/vishaltalreja01', url: 'https://linkedin.com/in/vishaltalreja01' },
     { label: 'GitHub', value: '/vishaltalreja01', url: 'https://github.com/vishaltalreja01' },
