@@ -13,17 +13,17 @@ const educationSectionData = {
     {
       title: 'MS Data Science',
       institution: 'University of Naples Federico II',
-      image: import('@/assets/logos/logo-unina.png'),
+      image: import('@/assets/logos/unina-logo.png'),
       dates: [new Date('2025.11'), null],
       description:
-        'Courses: Software and Hardware, Data Visualization, Business Intelligence, Digital Marketing, Time Series Analysis & Forecasting.',
+        'Courses: Statistics, Hardware and Software, Big Data, Data Science & Data Analysis',
       links: [website({ url: 'https://www.unina.it/it/' })],
     },
     {
       title: 'BS Computer Science',
       institution: 'Mehran University of Engineering & Technology',
       image: import('@/assets/logos/muet-logo.png'),
-      dates: [new Date('2019.12'), new Date('2023.12')],
+      dates: [new Date('2020.01'), new Date('2023.12')],
       description:
         'Courses: Software and Hardware, Data Visualization, Business Intelligence, Digital Marketing, Time Series Analysis & Forecasting.',
       links: [website({ url: 'https://muet.edu.pk' })],
