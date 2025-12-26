@@ -17,11 +17,17 @@ const { icon, slug, title } = Astro.props;
 </a>
 
 <style>
-  [aria-current='page'] {
-    @apply bg-primary-600 text-white;
+  a[aria-current='page'] {
+    @apply bg-primary-600 !important;
+  }
+  
+  a[aria-current='page'],
+  a[aria-current='page'] :global(*) {
+    @apply text-white !important;
+  }
+  
+  a:not([aria-current='page']) {
+    @apply text-gray-500 hover:bg-primary-600 hover:text-white dark:text-gray-200;
   }
 
-  :not([aria-current='page']) {
-    @apply text-gray-400 hover:bg-primary-600 hover:text-white dark:text-gray-200;
-  }
 </style>

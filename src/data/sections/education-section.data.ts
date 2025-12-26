@@ -11,6 +11,15 @@ const educationSectionData = {
   },
   diplomas: [
     {
+      title: 'MS Data Science',
+      institution: 'University of Naples Federico II',
+      image: import('@/assets/logos/logo-unina.png'),
+      dates: [new Date('2025.11'), null],
+      description:
+        'Courses: Software and Hardware, Data Visualization, Business Intelligence, Digital Marketing, Time Series Analysis & Forecasting.',
+      links: [website({ url: 'https://www.unina.it/it/' })],
+    },
+    {
       title: 'BS Computer Science',
       institution: 'Mehran University of Engineering & Technology',
       image: import('@/assets/logos/muet-logo.png'),

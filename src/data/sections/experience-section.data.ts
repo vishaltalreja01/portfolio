@@ -29,10 +29,10 @@ const experienceSectionData = {
   },
   jobs: [
     {
-      role: 'IT Mentee',
+      role: 'Oracle Apex Developer',
       company: 'Pakistan State Oil (PSO)',
       image: import('@/assets/logos/pso-logo.png'),
-      dates: [new Date('2025-02'), null],
+      dates: [new Date('2025-02'), new Date('2025-11')],
       description: `
         - Building and maintaining dynamic web applications using Oracle Apex to meet requirements.
       `,
@@ -49,7 +49,7 @@ const experienceSectionData = {
       role: 'React Js developer',
       company: 'Kava Up LLC',
       image: import('@/assets/logos/kavaup-logo.jpg'),
-      dates: [new Date('2023-12'), new Date('2024-11')],
+      dates: [new Date('2023-12'), new Date('2024-08')],
       description: `
         - Developed and optimized responsive web apps using React.js, Next.js, Tailwind CSS, and Material UI, achieving a 70% boost in user engagement.
         - Built dynamic forms using Formik and implemented animations with React Motion for enhanced user experiences.
