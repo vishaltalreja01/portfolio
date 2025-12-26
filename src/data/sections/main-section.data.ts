@@ -26,7 +26,7 @@ const mainSectionData = {
     { label: 'Website', value: 'vishal-talreja.netlify.app', url: '/', fullRow: true },
   ],
   description:
-    'Experienced Frontend Developer with expertise in ReactJs, NextJs, Tailwind CSS, Material UI, building high-performance, responsive web applications. Skilled in Agile methodologies, team collaboration, and mentoring, with a focus on web accessibility, performance optimization, and intuitive user interfaces. Committed to delivering scalable solutions that enhance user experiences and drive digital transformation',
+    'Experienced Software Developer with expertise in Oracle Apex, Oracle, SQL, PL/SQL, HTML, JavaScript, building highperformance, responsive web applications. Skilled in Agile methodologies, team collaboration, and mentoring, with a focus on web accessibility, performance optimization, and intuitive user interfaces. Committed to delivering scalable solutions that enhance user experiences and drive digital transformation',
   tags: [{ name: 'Open to work' }, { name: 'Open for freelance' }, { name: 'Working on side project' }],
   action: {
     label: 'Download CV',
