@@ -34,7 +34,13 @@ const experienceSectionData = {
       image: import('@/assets/logos/pso-logo.png'),
       dates: [new Date('2025-02'), new Date('2025-11')],
       description: `
-        - Building and maintaining dynamic web applications using Oracle Apex to meet requirements.
+        - Built responsive, data-centric web apps using Oracle APEX.
+        - Wrote PL/SQL code, including procedures and triggers.
+        - Created interactive reports, forms, and dashboards.
+        - Used dynamic actions and AJAX for UI enhancements.
+        - Applied security controls like authorization schemes.
+        - Collaborated with teams for requirement analysis and delivery.
+        - Optimized SQL performance and application speed.
       `,
       tagsList: {
         title: 'Technologies',
@@ -46,7 +52,7 @@ const experienceSectionData = {
       ],
     },
     {
-      role: 'React Js developer',
+      role: 'Software developer',
       company: 'Kava Up LLC',
       image: import('@/assets/logos/kavaup-logo.jpg'),
       dates: [new Date('2023-12'), new Date('2024-08')],
