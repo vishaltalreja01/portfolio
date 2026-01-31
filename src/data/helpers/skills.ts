@@ -116,6 +116,13 @@ export const postgreSql = createSkillFactory({
   // url: 'https://www.postgresql.org/',
 });
 
+export const prisma = createSkillFactory({
+  name: 'Prisma',
+  icon: 'simple-icons:prisma',
+  iconColor: '#ffffff',
+  // url: 'https://www.prisma.io/',
+});
+
 export const prettier = createSkillFactory({
   name: 'Prettier',
   icon: 'simple-icons:prettier',
