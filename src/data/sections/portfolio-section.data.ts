@@ -1,7 +1,7 @@
 import type { PortfolioSection } from '@/types/sections/portfolio-section.types';
 import type { ReadonlyDeep } from 'type-fest';
-import { demo, github, mockups, website } from '../helpers/links';
-import { css, html, javascript, nextJs, php, prettier, react, sql, strapi, tailwindCss } from '../helpers/skills';
+import {github, website } from '../helpers/links';
+import { css, html, javascript, nextJs, php, prettier, prisma, react, sql, strapi, tailwindCss } from '../helpers/skills';
 
 const portfolioSectionData = {
   config: {
@@ -15,6 +15,26 @@ const portfolioSectionData = {
     },
   },
   projects: [
+    {
+      name: 'Savvy Consultants',
+      image: import('@/assets/portfolio/project-4.jpeg'),
+      dates: [new Date('2025-12'), new Date('2026-01')],
+      details: [
+        { label: 'Team size', value: '1 person' },
+        { label: 'My role', value: ['Full Stack Developer'] },
+        { label: 'Company', value: 'Savvy Consultants' },
+        { label: 'Category', value: ['Company Website'] },
+      ],
+      pdfDetails: [{ label: 'Demo', value: 'https://savvyconsultants.netlify.app/', url: 'https://savvyconsultants.netlify.app/' }],
+      screenshots: [{ src: import('@/assets/portfolio/project-1-screenshot-4.jpg'), alt: 'First screenshot' }],
+      description:
+        'I created a website for Savvy Consultants, a company that specializes in providing high-quality products and services.',
+      tagsList: {
+        title: 'Technologies',
+        tags: [nextJs(), react(), prisma(), tailwindCss()],
+      },
+      links: [website({ url: 'https://savvyconsultants.netlify.app/' })],
+    },
     {
       name: 'Kava Up LLC Website',
       image: import('@/assets/portfolio/project-1.jpeg'),
