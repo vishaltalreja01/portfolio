@@ -61,10 +61,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KonradSzwarc/devscard.git"
+    "url": "git+https://github.com/vishatalreja01/portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/KonradSzwarc/devscard/issues"
+    "url": "https://github.com/vishatalreja01/portfolio/issues"
   },
-  "homepage": "https://github.com/KonradSzwarc/devscard#readme"
+  "homepage": "https://github.com/vishatalreja01/portfolio#readme"
 }

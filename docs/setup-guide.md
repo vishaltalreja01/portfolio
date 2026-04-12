@@ -2,7 +2,7 @@
 
 ## 1. Run the project locally
 
-1\. Create a fork of the [project repository](https://github.com/KonradSzwarc/devscard).
+1\. Create a fork of the [project repository](https://github.com/vishatalreja01/portfolio).
 
 <figure><img src=".gitbook/assets/fork-repository.png" alt=""><figcaption></figcaption></figure>
 
