@@ -9,7 +9,7 @@ import Typography from '@/web/components/typography.astro';
 
 export interface Props extends Job {}
 
-const { role, company, dates, description, links, tagsList, image } = Astro.props;
+const { role, company, location, dates, description, links, tagsList, image } = Astro.props;
 ---
 
 <div class="flex flex-col gap-3">
@@ -18,7 +18,25 @@ const { role, company, dates, description, links, tagsList, image } = Astro.prop
       <Thumbnail src={image} alt={`${company} logo`} size="small" />
       <div class="flex flex-col">
         <Typography variant="item-title">{role}</Typography>
-        <Typography variant="item-subtitle-primary" class="mb-0.5">{company}</Typography>
+        {
+          location ? (
+            <>
+              <Typography variant="item-subtitle-primary" class="mb-0.5 sm:hidden">
+                {company}
+              </Typography>
+              <Typography variant="item-subtitle-secondary" class="sm:hidden">
+                {location}
+              </Typography>
+              <Typography variant="item-subtitle-primary" class="hidden sm:block">
+                {company} . {location}
+              </Typography>
+            </>
+          ) : (
+            <Typography variant="item-subtitle-primary" class="mb-0.5">
+              {company}
+            </Typography>
+          )
+        }
         <Timestamp dates={dates} />
       </div>
     </div>

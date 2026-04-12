@@ -12,6 +12,11 @@ export interface Job {
   company: string;
 
   /**
+   * City, country, or work location for the job.
+   */
+  location?: string;
+
+  /**
    * [WEB] Logo of the company.
    *
    * **Ratio**: 1:1
