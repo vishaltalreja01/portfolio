@@ -28,26 +28,31 @@ const hiddenProjects = projects.slice(initialProjectCount);
     }
     {
       hiddenProjects.length > 0 && (
-        <div id="hidden-projects" class="hidden flex flex-col gap-8">
-          <Divider />
-          {hiddenProjects.flatMap((project) => [<Project {...project} screenshotsConfig={config.screenshots} />, <Divider />])}
-        </div>
-        <div class="relative" id="see-more-container">
-          <div class="absolute inset-0 flex items-center" aria-hidden="true">
-            <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+        <>
+          <div id="hidden-projects" class="flex hidden flex-col gap-8">
+            <Divider />
+            {hiddenProjects.flatMap((project) => [
+              <Project {...project} screenshotsConfig={config.screenshots} />,
+              <Divider />,
+            ])}
           </div>
-          <div class="relative flex justify-center">
-            <button
-              id="see-more-btn"
-              class="group inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-6 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-primary-400 transition-all duration-300"
-            >
-              <span>View More Projects</span>
-              <span class="group-hover:translate-y-0.5 transition-transform duration-300">
-                <Icon name="fa6-solid:chevron-down" size={12} />
-              </span>
-            </button>
+          <div class="relative" id="see-more-container">
+            <div class="absolute inset-0 flex items-center" aria-hidden="true">
+              <div class="w-full border-t border-gray-200 dark:border-gray-700" />
+            </div>
+            <div class="relative flex justify-center">
+              <button
+                id="see-more-btn"
+                class="group inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-6 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all duration-300 hover:bg-gray-50 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-primary-400"
+              >
+                <span>View More Projects</span>
+                <span class="transition-transform duration-300 group-hover:translate-y-0.5">
+                  <Icon name="fa6-solid:chevron-down" size={12} />
+                </span>
+              </button>
+            </div>
           </div>
-        </div>
+        </>
       )
     }
   </DividedList>

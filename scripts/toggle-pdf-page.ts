@@ -14,7 +14,7 @@ const main = async () => {
 
   if (sourceExists && destinationExists) {
     throw new Error(
-      `Cannot move ${source} -> ${destination} because both paths exist. Remove or rename one of them and try again.`,
+      `Cannot move ${source} -> ${destination} because both paths exist. Remove or rename one of them and try again.`
     );
   }
   if (sourceExists) {
