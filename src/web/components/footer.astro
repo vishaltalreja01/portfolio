@@ -1,0 +1,53 @@
+---
+import type { MainSection } from '@/types/sections/main-section.types';
+import LinkButton from './link-button.astro';
+import Typography from './typography.astro';
+
+export interface Props {
+  profile: MainSection;
+}
+
+const { profile } = Astro.props;
+---
+
+<footer class="mt-16 sm:mt-24 pb-12 w-full">
+  <!-- Gradient Divider -->
+  <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent dark:via-gray-800 mb-12"></div>
+  
+  <div class="flex flex-col items-center gap-10">
+    
+    <!-- Social Links -->
+    {
+      profile.links.length > 0 && (
+        <div class="flex flex-col items-center gap-4">
+           <Typography variant="item-subtitle-secondary" class="text-xs font-semibold uppercase tracking-widest opacity-50">
+             Connect
+           </Typography>
+           <div class="flex flex-wrap justify-center gap-4 px-8 py-4 rounded-full bg-gray-50/50 dark:bg-gray-800/30 border border-gray-100 dark:border-gray-700/50 backdrop-blur-sm shadow-sm transition-transform hover:scale-105 duration-300">
+            {profile.links.map((link) => (
+              <div class="transform hover:-translate-y-1 transition-transform duration-200">
+                <LinkButton {...link} />
+              </div>
+            ))}
+           </div>
+        </div>
+      )
+    }
+    
+    <!-- Copyright & Credits -->
+    <div class="flex flex-col gap-4 items-center text-center">
+      <Typography variant="item-subtitle-secondary" class="text-sm font-medium tracking-wide opacity-90">
+        &copy; {new Date().getFullYear()} &nbsp; {profile.fullName} &nbsp; All rights reserved.
+      </Typography>
+      
+      <div class="flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500 font-medium">
+        <span>Designed & Built with</span>
+        <span class="text-red-400 animate-pulse">♥</span>
+        <span>using</span>
+        <span class="text-primary-600 dark:text-primary-400 font-semibold">Astro</span>
+        <span>&</span>
+        <span class="text-cyan-500 font-semibold">Tailwind</span>
+      </div>
+    </div>
+  </div>
+</footer>
