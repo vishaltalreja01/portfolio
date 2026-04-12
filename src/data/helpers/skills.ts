@@ -167,7 +167,7 @@ export const javascript = createSkillFactory({
 
 export const mysql = createSkillFactory({
   name: 'MySQL',
-  icon: 'logos:mysql',
+  icon: 'simple-icons:mysql',
   iconColor: '#4479A1',
   // url: 'https://www.mysql.com/',
 });
@@ -247,4 +247,18 @@ export const vue = createSkillFactory({
   icon: 'simple-icons:vuedotjs',
   iconColor: '#4FC08D',
   // url: 'https://vuejs.org/',
+});
+
+export const docker = createSkillFactory({
+  name: 'Docker',
+  icon: 'simple-icons:docker',
+  iconColor: '#2496ED',
+  // url: 'https://www.docker.com/',
+});
+
+export const kubernetes = createSkillFactory({
+  name: 'Kubernetes',
+  icon: 'simple-icons:kubernetes',
+  iconColor: '#326CE5',
+  // url: 'https://kubernetes.io/',
 });

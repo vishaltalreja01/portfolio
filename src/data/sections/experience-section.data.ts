@@ -11,13 +11,16 @@ import {
   javascript,
   mysql,
   tailwindCss,
-  // typescript,
+  kubernetes,
   oracle,
   oracleApex,
   sql,
   strapi,
   materialUI,
   typescript,
+  postgreSql,
+  nestJs,
+  docker,
 } from '../helpers/skills';
 
 const experienceSectionData = {
@@ -29,8 +32,28 @@ const experienceSectionData = {
   },
   jobs: [
     {
+      role: 'Lead Full Stack Developer',
+      company: 'Volantinopiù Srl',
+      location: 'Naples, Italy',
+      image: import('@/assets/logos/volantinopiu-logo.png'),
+      dates: [new Date('2026-04'), null],
+      description: `
+        - Lead the Team of 3 developers to build and maintain web applications.
+        - Building scalable and maintainable Digital Signage Ecosystem.
+      `,
+      tagsList: {
+        title: 'Technologies',
+        tags: [react(), nestJs(), postgreSql(), tailwindCss(), typescript(), docker(), kubernetes()],
+      },
+      links: [
+        website({ url: 'https://www.volantinopiu.com/' }),
+        linkedin({ url: 'https://www.linkedin.com/company/volantinopi%C3%B9' }),
+      ],
+    },
+    {
       role: 'Oracle Apex Developer',
       company: 'Pakistan State Oil (PSO)',
+      location: 'Karachi, Pakistan',
       image: import('@/assets/logos/pso-logo.png'),
       dates: [new Date('2025-02'), new Date('2025-11')],
       description: `
@@ -54,6 +77,7 @@ const experienceSectionData = {
     {
       role: 'Software developer',
       company: 'Kava Up LLC',
+      location: 'Remote',
       image: import('@/assets/logos/kavaup-logo.jpg'),
       dates: [new Date('2023-12'), new Date('2024-08')],
       description: `
@@ -74,6 +98,7 @@ const experienceSectionData = {
     {
       role: 'Web Developer Lead',
       company: 'RKP Center',
+      location: 'Pakistan',
       image: import('@/assets/logos/rkp-logo.png'),
       dates: [new Date('2023-01'), new Date('2023-11')],
       description: `
@@ -92,6 +117,7 @@ const experienceSectionData = {
     {
       role: 'Frontend Developer',
       company: 'Fiverr',
+      location: 'Remote',
       image: import('@/assets/logos/fiverr-logo.jpg'),
       dates: [new Date('2022-04'), new Date('2023-02')],
       description: `
