@@ -15,8 +15,7 @@ const educationSectionData = {
       institution: 'University of Naples Federico II',
       image: import('@/assets/logos/unina-logo.png'),
       dates: [new Date('2025.11'), null],
-      description:
-        'Courses: Statistics, Hardware and Software, Big Data, Data Science & Data Analysis',
+      description: 'Courses: Statistics, Hardware and Software, Big Data, Data Science & Data Analysis',
       links: [website({ url: 'https://www.unina.it/it/' })],
     },
     {

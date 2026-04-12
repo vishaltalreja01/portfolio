@@ -11,7 +11,6 @@ A fully customizable template to create your online (and paper) resume without w
 - **Deployment**: [Netlify](https://netlify.app)
 - **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
 
-
 ## Features
 
 - **✍️ Intellisense** — provide your data in TypeScript files, getting autocompletion and description of each property right in your IDE.
