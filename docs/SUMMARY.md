@@ -12,4 +12,4 @@
 ## External links
 
 - [Example resume](https://portfolio.netlify.app)
-- [GitHub repository](https://github.com/vishatalreja01/portfolio)
+- [GitHub repository](https://github.com/vishaltalreja01/portfolio)

@@ -50,7 +50,7 @@ jobs:
   deploy:
     name: Deploy to Netlify
     needs: [prettier, typescript, astro]
-    if: github.repository == 'KonradSzwarc/devscard'
+    if: github.repository == 'vishaltalreja01/portfolio'
     runs-on: ubuntu-latest
     outputs:
       deploy-url: ${{ steps.netlify.outputs.deploy-url }}
@@ -79,7 +79,7 @@ jobs:
 
   percy:
     name: Run Percy check
-    if: github.repository == 'KonradSzwarc/devscard'
+    if: github.repository == 'vishaltalreja01/portfolio'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -100,7 +100,7 @@ jobs:
 
   lighthouse:
     name: Run Lighthouse check
-    if: github.repository == 'KonradSzwarc/devscard'
+    if: github.repository == 'vishaltalreja01/portfolio'
     needs: deploy
     runs-on: ubuntu-latest
     steps:
@@ -113,7 +113,7 @@ jobs:
 
   release:
     name: Create release
-    if: github.repository == 'KonradSzwarc/devscard'
+    if: github.repository == 'vishaltalreja01/portfolio'
     runs-on: ubuntu-latest
     permissions:
       contents: write

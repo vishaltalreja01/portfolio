@@ -20,14 +20,14 @@ skill({ description: '...' }) — returns skill with a description displayed whe
 
 export const oracle = createSkillFactory({
   name: 'Oracle',
-  icon: 'cib:oracle', // Assign custom SVG
+  icon: 'simple-icons:oracle',
   iconColor: '#F80000',
   // url: 'https://www.oracle.com/',
 });
 
 export const oracleApex = createSkillFactory({
   name: 'Oracle Apex',
-  icon: 'cib:oracle', // Assign custom SVG
+  icon: 'simple-icons:oracle',
   iconColor: '#F80000',
   // url: 'https://apex.oracle.com/',
 });
@@ -167,7 +167,7 @@ export const mysql = createSkillFactory({
 
 export const sql = createSkillFactory({
   name: 'SQL',
-  icon: 'mdi:sql-query',
+  icon: 'simple-icons:mysql',
   iconColor: '#ECD53F',
   // url: 'https://developer.mozilla.org/en-US/docs/Glossary/SQL',
 });

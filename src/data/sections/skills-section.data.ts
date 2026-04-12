@@ -19,7 +19,6 @@ import {
   supabase,
   tailwindCss,
   typescript,
-  web3,
 } from '../helpers/skills';
 
 const skillsSectionData = {
