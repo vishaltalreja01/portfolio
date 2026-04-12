@@ -1,7 +1,7 @@
 import type { PortfolioSection } from '@/types/sections/portfolio-section.types';
 import type { ReadonlyDeep } from 'type-fest';
-import {github, website } from '../helpers/links';
-import { css, html, javascript, nextJs, php, prettier, prisma, react, sql, strapi, tailwindCss } from '../helpers/skills';
+import { github, website } from '../helpers/links';
+import { css, html, javascript, nextJs, php, prettier, react, sql, strapi, tailwindCss } from '../helpers/skills';
 
 const portfolioSectionData = {
   config: {
