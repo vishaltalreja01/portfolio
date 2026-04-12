@@ -12,6 +12,11 @@ const main = async () => {
   const sourceExists = existsSync(source);
   const destinationExists = existsSync(destination);
 
+  if (sourceExists && destinationExists) {
+    throw new Error(
+      `Cannot move ${source} -> ${destination} because both paths exist. Remove or rename one of them and try again.`,
+    );
+  }
   if (sourceExists) {
     await rename(source, destination);
     console.log(`Moved ${source} -> ${destination}`);
