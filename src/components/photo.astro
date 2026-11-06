@@ -8,12 +8,13 @@ export interface Props {
   class?: string;
   width?: number;
   height?: number;
+  loading?: 'eager' | 'lazy';
 }
 
-const { src, ...props } = Astro.props;
+const { src, loading: requestedLoading, ...props } = Astro.props;
 
 const isRemoteImage = typeof src === 'string';
-const loading = import.meta.env.PUBLIC_APP_ENV === 'snapshot' ? 'eager' : 'lazy';
+const loading = requestedLoading ?? (import.meta.env.PUBLIC_APP_ENV === 'snapshot' ? 'eager' : 'lazy');
 ---
 
 {

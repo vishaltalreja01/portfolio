@@ -66,5 +66,11 @@
   "bugs": {
     "url": "https://github.com/vishaltalreja01/portfolio/issues"
   },
-  "homepage": "https://github.com/vishaltalreja01/portfolio#readme"
+  "homepage": "https://github.com/vishaltalreja01/portfolio#readme",
+  "allowScripts": {
+    "sharp@0.32.5": true,
+    "esbuild@0.17.19": true,
+    "esbuild@0.18.20": true,
+    "puppeteer@20.8.0": true
+  }
 }
