@@ -1,0 +1,35 @@
+---
+export interface Props {
+  number: string;
+  eyebrow: string;
+  title: string;
+  accent?: string;
+  subtitle?: string;
+  count?: number | string;
+  countLabel?: string;
+}
+
+const { number, eyebrow, title, accent, subtitle, count, countLabel } = Astro.props;
+---
+
+<header class="section-header reveal">
+  <div class="section-header-copy">
+    <p class="eyebrow-line">{eyebrow}</p>
+    <h2>
+      {title}
+      {accent && <span class="accent-serif">{accent}</span>}
+    </h2>
+    {subtitle && <p class="lede">{subtitle}</p>}
+  </div>
+  <div class="section-header-meta" aria-hidden={count === undefined ? 'true' : undefined}>
+    <span class="ghost-number" aria-hidden="true">{number}</span>
+    {
+      count !== undefined && (
+        <p class="section-count">
+          <strong>{count}</strong>
+          <span>{countLabel}</span>
+        </p>
+      )
+    }
+  </div>
+</header>

@@ -13,7 +13,7 @@ const config = {
   meta: {
     title: 'Vishal Kumar — Full Stack Developer',
     description:
-      'Vishal Kumar is a full stack developer based in Naples, Italy, building thoughtful web experiences with React, Next.js, TypeScript, and reliable backend systems. Explore selected work and get in touch.',
+      'Vishal Kumar is a full stack developer based in Salerno, Italy, building thoughtful web experiences with React, Next.js, TypeScript, and reliable backend systems. Explore selected work and get in touch.',
     faviconPath: '/src/assets/favicon.jpeg',
   },
   pdf: {
