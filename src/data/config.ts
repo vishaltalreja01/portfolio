@@ -11,9 +11,9 @@ const config = {
     },
   },
   meta: {
-    title: 'Vishal Kumar - ReactJs Developer',
+    title: 'Vishal Kumar — Full Stack Developer',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sodales ac dui at vestibulum. In condimentum metus id dui tincidunt, in blandit mi vehicula.',
+      'Vishal Kumar is a full stack developer based in Salerno, Italy, building thoughtful web experiences with React, Next.js, TypeScript, and reliable backend systems. Explore selected work and get in touch.',
     faviconPath: '/src/assets/favicon.jpeg',
   },
   pdf: {

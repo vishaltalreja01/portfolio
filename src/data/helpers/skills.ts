@@ -159,7 +159,7 @@ export const php = createSkillFactory({
 });
 
 export const javascript = createSkillFactory({
-  name: 'JavaScipt',
+  name: 'JavaScript',
   icon: 'simple-icons:javascript',
   iconColor: '#F7DF1E',
   // url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',

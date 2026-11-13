@@ -4,10 +4,16 @@ on:
   push:
     branches: [main]
 
+env:
+  # puppeteer is only used by scripts/generate-pdf.ts (run locally); its Chromium
+  # download during `npm ci` stalled CI until the 6h job limit.
+  PUPPETEER_SKIP_DOWNLOAD: 'true'
+
 jobs:
   prettier:
     name: Run Prettier check
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -22,6 +28,7 @@ jobs:
   typescript:
     name: Run TypeScript check
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -36,6 +43,7 @@ jobs:
   astro:
     name: Run Astro check
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -52,6 +60,7 @@ jobs:
     needs: [prettier, typescript, astro]
     if: github.repository == 'vishaltalreja01/portfolio'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     outputs:
       deploy-url: ${{ steps.netlify.outputs.deploy-url }}
     steps:
@@ -81,6 +90,7 @@ jobs:
     name: Run Percy check
     if: github.repository == 'vishaltalreja01/portfolio'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -103,6 +113,7 @@ jobs:
     if: github.repository == 'vishaltalreja01/portfolio'
     needs: deploy
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v3
       - name: Lighthouse check
@@ -115,6 +126,7 @@ jobs:
     name: Create release
     if: github.repository == 'vishaltalreja01/portfolio'
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     permissions:
       contents: write
     steps:

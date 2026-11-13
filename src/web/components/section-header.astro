@@ -1,0 +1,49 @@
+---
+export interface Props {
+  number: string;
+  eyebrow: string;
+  title: string;
+  accent?: string;
+  subtitle?: string;
+  count?: number | string;
+  countLabel?: string;
+  breakdown?: { label: string; count: number }[];
+}
+
+const { number, eyebrow, title, accent, subtitle, count, countLabel, breakdown } = Astro.props;
+---
+
+<header class="section-header reveal">
+  <div class="section-header-copy">
+    <p class="eyebrow-line">{eyebrow}</p>
+    <h2>
+      {title}
+      {accent && <span class="accent-serif">{accent}</span>}
+    </h2>
+    {subtitle && <p class="lede">{subtitle}</p>}
+  </div>
+  <div class="section-header-meta" aria-hidden={count === undefined ? 'true' : undefined}>
+    <div class="section-meta-main">
+      <span class="ghost-number" aria-hidden="true">{number}</span>
+      {
+        count !== undefined && (
+          <p class="section-count">
+            <strong>{count}</strong>
+            <span>{countLabel}</span>
+          </p>
+        )
+      }
+    </div>
+    {
+      breakdown && breakdown.length > 0 && (
+        <ul class="section-breakdown">
+          {breakdown.map((item) => (
+            <li>
+              {item.label} <span>({item.count})</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</header>

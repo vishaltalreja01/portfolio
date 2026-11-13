@@ -1,43 +1,699 @@
 ---
 import Layout from '@/web/components/layout.astro';
-import Sidebar from '@/web/components/sidebar.astro';
-import ThemeToggle from '@/web/components/theme-toggle.astro';
-import MainSection from '@/web/sections/main/main-section.web.astro';
-import SkillsSection from '@/web/sections/skills/skills-section.web.astro';
-import ExperienceSection from '@/web/sections/experience/experience-section.web.astro';
-import PortfolioSection from '@/web/sections/portfolio/portfolio-section.web.astro';
-import EducationSection from '@/web/sections/education/education-section.web.astro';
-import TestimonialsSection from '@/web/sections/testimonials/testimonials-section.web.astro';
-import Footer from '@/web/components/footer.astro';
-import Logo from '@/web/components/logo.astro';
-// import FavoritesSection from '@/web/sections/favorites/favorites-section.web.astro';
+import Photo from '@/components/photo.astro';
+import Description from '@/components/description.astro';
+import Icon from '@/web/components/icon.astro';
+import SectionHeader from '@/web/components/section-header.astro';
 import cv from '@/data';
+import {
+  astro,
+  chakraUi,
+  css,
+  docker,
+  html,
+  javascript,
+  kubernetes,
+  materialUI,
+  mysql,
+  nestJs,
+  nextJs,
+  oracle,
+  oracleApex,
+  php,
+  postgreSql,
+  prisma,
+  react,
+  sql,
+  strapi,
+  supabase,
+  tailwindCss,
+  typescript,
+} from '@/data/helpers/skills';
+import type { IconName } from '@/types/shared';
+import '@/web/portfolio.css';
 
 const { config, sections } = cv();
+const { main, portfolio, experience, education, testimonials } = sections;
+
+const EMAIL = 'vishaltalreja01@gmail.com';
+const [firstName, ...rest] = main.fullName.split(' ');
+const lastName = rest.join(' ');
+const currentJob = experience.jobs[0]!;
+
+const monthYear = (value: Date) => value.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+const range = (dates: readonly (Date | null)[]) =>
+  `${monthYear(dates[0]!)} — ${dates[1] ? monthYear(dates[1]) : 'Present'}`;
+const pad = (n: number, width = 2) => String(n).padStart(width, '0');
+
+const firstJobStart = Math.min(...experience.jobs.map((job) => job.dates[0]!.getTime()));
+const yearsOfExperience = Math.floor((Date.now() - firstJobStart) / (365.25 * 24 * 3600 * 1000));
+
+type SkillTile = { name: string; icon: IconName };
+const skillGroups: { id: string; label: string; skills: readonly SkillTile[] }[] = [
+  {
+    id: 'frontend',
+    label: 'Frontend',
+    skills: [
+      react(),
+      nextJs(),
+      astro(),
+      typescript(),
+      javascript(),
+      html(),
+      css(),
+      tailwindCss(),
+      materialUI(),
+      chakraUi(),
+    ],
+  },
+  { id: 'backend', label: 'Backend', skills: [nestJs(), php(), strapi(), prisma(), oracleApex()] },
+  { id: 'database', label: 'Database', skills: [postgreSql(), sql(), mysql(), oracle(), supabase()] },
+  {
+    id: 'devops',
+    label: 'DevOps & Tools',
+    skills: [
+      docker(),
+      kubernetes(),
+      { name: 'Git', icon: 'simple-icons:git' },
+      { name: 'Linux', icon: 'simple-icons:linux' },
+    ],
+  },
+];
+const allSkills = skillGroups.flatMap((group) => group.skills.map((skill) => ({ ...skill, group: group.id })));
+
+const navItems = [
+  { href: '#work', label: 'Work' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#about', label: 'About' },
+  { href: '#contact', label: 'Contact' },
+];
 ---
 
 <Layout {...config} sections={sections}>
-  <!-- <ThemeToggle /> -->
-  <img src="/header-gradient.svg" alt="Header Gradient" class="pointer-events-none absolute top-0 w-full select-none" />
-  <header class="fixed top-5 flex items-center justify-center gap-20">
-    <Logo />
-    <Sidebar sections={sections} className="" />
-    <ThemeToggle />
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell site-header-inner">
+      <a class="wordmark" href="#top" aria-label={`${main.fullName}, back to top`}>vk<span>.</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <div class="header-actions">
+        <button
+          id="theme-toggle"
+          class="icon-button"
+          type="button"
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
+        >
+          <svg
+            class="icon-moon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"></path></svg
+          >
+          <svg
+            class="icon-sun"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"
+            ><circle cx="12" cy="12" r="4"></circle><path
+              d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+            ></path></svg
+          >
+        </button>
+        <button
+          id="menu-toggle"
+          class="icon-button menu-button"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <nav class="shell" aria-label="Mobile navigation">
+        <ol>
+          {
+            navItems.map((item, index) => (
+              <li style={`--i: ${index}`}>
+                <a href={item.href}>
+                  <span class="mobile-menu-index">{pad(index + 1)}</span>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+      <div class="shell mobile-menu-footer">
+        <p class="mono-label">Get in touch</p>
+        <a class="direct-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        <ul>
+          {
+            main.links.map((link) => (
+              <li>
+                <a class="social-box" href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
+                  <Icon name={link.icon} size={17} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
   </header>
-  <main class="w-full max-w-5xl space-y-4 px-2 py-3 sm:space-y-6 sm:px-8 sm:py-12 lg:space-y-8 lg:py-20">
-    <MainSection {...sections.main} />
-    <SkillsSection {...sections.skills} />
-    <ExperienceSection {...sections.experience} />
-    <PortfolioSection {...sections.portfolio} />
-    <EducationSection {...sections.education} />
-    <TestimonialsSection {...sections.testimonials} />
-    <!-- <FavoritesSection {...sections.favorites} /> -->
-    <Footer profile={sections.main} />
+
+  <main id="main-content">
+    <!-- HERO -->
+    <section id="top" class="hero">
+      <div class="shell hero-grid">
+        <span class="crosshair tl" aria-hidden="true"></span><span class="crosshair tr" aria-hidden="true"></span>
+        <span class="crosshair bl" aria-hidden="true"></span><span class="crosshair br" aria-hidden="true"></span>
+
+        <div class="hero-copy reveal">
+          <p class="status-pill"><span class="pulse-dot"></span> Open to work &amp; freelance</p>
+          <p class="hello">Hi, I’m</p>
+          <h1>
+            <span class="first-name">{firstName}</span>
+            <span class="last-name">{lastName}.</span>
+          </h1>
+          <p class="role-line">
+            <span>{currentJob.role} at</span>
+            <a href={currentJob.links?.[0]?.url} target="_blank" rel="noopener noreferrer">{currentJob.company}</a>
+          </p>
+          <p class="tagline">Turning complex ideas into fast, intuitive products — from database to pixel.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href={main.action?.url} download={main.action?.downloadedFileName}>
+              <Icon name="ri:download-2-line" size={17} /> Download CV
+            </a>
+            <a class="btn btn-outline" href="#contact">Get in touch <Icon name="ri:arrow-right-line" size={17} /></a>
+          </div>
+          <div class="connect">
+            <span class="mono-label">Connect</span>
+            <ul>
+              {
+                main.links.map((link) => (
+                  <li>
+                    <a
+                      class="social-box"
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.name}
+                    >
+                      <Icon name={link.icon} size={17} />
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" style="--delay: 120ms">
+          <div class="portrait">
+            <span class="portrait-offset" aria-hidden="true"></span>
+            <Photo
+              src={main.image!}
+              alt={main.fullName}
+              loading="eager"
+              width={560}
+              height={680}
+              class="portrait-img"
+            />
+            <span class="portrait-caption">Salerno, Italy</span>
+          </div>
+          <div class="stat-card stat-top">
+            <strong>{yearsOfExperience}+</strong>
+            <span>Years</span>
+            <small>Industry experience</small>
+          </div>
+          <div class="stat-card stat-bottom">
+            <strong>{pad(portfolio.projects.length)}</strong>
+            <span>Projects</span>
+            <small>Shipped for clients</small>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#work" aria-label="Scroll to selected work"><span>Scroll</span><i></i></a>
+    </section>
+
+    <!-- 01 WORK -->
+    <section id="work" class="section">
+      <div class="shell">
+        <SectionHeader
+          number="01"
+          eyebrow="Selected work"
+          title="Projects"
+          accent="I've shipped."
+          subtitle="Websites and applications I’ve helped shape, build and launch — for startups, agencies and companies."
+          count={pad(portfolio.projects.length)}
+          countLabel="Projects"
+        />
+        <div class="project-grid">
+          {
+            portfolio.projects.map((project, index) => (
+              <article class="project-card reveal" style={`--delay: ${index * 80}ms`}>
+                <a
+                  class="project-media"
+                  href={project.links?.[0]?.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabindex="-1"
+                  aria-hidden="true"
+                >
+                  <Photo src={project.image!} alt="" width={880} height={550} />
+                </a>
+                <div class="project-body">
+                  <div class="project-meta">
+                    <span>{pad(index + 1)}</span>
+                    <span>{project.details?.find((d) => d.label === 'Category')?.value}</span>
+                    <span>{project.dates?.[0].getFullYear()}</span>
+                  </div>
+                  <h3>
+                    <a href={project.links?.[0]?.url} target="_blank" rel="noopener noreferrer">
+                      {project.name}
+                      <Icon name="ri:arrow-right-up-line" size={20} class="title-arrow" />
+                    </a>
+                  </h3>
+                  <p>{project.description}</p>
+                  <ul class="chip-list">
+                    {project.tagsList?.tags.map((tag) => (
+                      <li>{tag.name}</li>
+                    ))}
+                  </ul>
+                  {project.links && project.links.length > 1 && (
+                    <a class="mono-link" href={project.links[1]?.url} target="_blank" rel="noopener noreferrer">
+                      Source code <Icon name="ri:arrow-right-line" size={14} />
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 SKILLS -->
+    <section id="skills" class="section section-tinted">
+      <div class="shell">
+        <SectionHeader
+          number="02"
+          eyebrow="Technical expertise"
+          title="Skills &"
+          accent="technologies."
+          subtitle="The toolkit I reach for to build reliable, accessible and maintainable products."
+          count={allSkills.length}
+          countLabel="Technologies"
+          breakdown={skillGroups.map((group) => ({ label: group.label, count: group.skills.length }))}
+        />
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            {
+              [0, 1].map(() => (
+                <ul>
+                  {allSkills.map((skill) => (
+                    <li>
+                      <Icon name={skill.icon} size={15} /> {skill.name}
+                    </li>
+                  ))}
+                </ul>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="filter-tabs reveal" role="group" aria-label="Filter skills by category">
+          <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">
+            All <sup>{allSkills.length}</sup>
+          </button>
+          {
+            skillGroups.map((group) => (
+              <button type="button" class="filter-tab" data-filter={group.id} aria-pressed="false">
+                {group.label} <sup>{group.skills.length}</sup>
+              </button>
+            ))
+          }
+        </div>
+        <ul class="skill-grid" aria-live="polite">
+          {
+            allSkills.map((skill) => (
+              <li class="skill-tile" data-group={skill.group}>
+                <span class="skill-icon">
+                  <Icon name={skill.icon} size={18} />
+                </span>
+                {skill.name}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03 EXPERIENCE -->
+    <section id="experience" class="section">
+      <div class="shell">
+        <SectionHeader
+          number="03"
+          eyebrow="The journey"
+          title="Experience"
+          accent="so far."
+          subtitle="From freelance work to leading a development team — every role added a new perspective."
+          count={`${yearsOfExperience}+`}
+          countLabel="Years"
+        />
+        <ol class="job-list">
+          {
+            experience.jobs.map((job, index) => (
+              <li class="job reveal">
+                <span class="job-index">{pad(index + 1)}</span>
+                <div class="job-main">
+                  <div class="job-head">
+                    <h3>{job.role}</h3>
+                    {index === 0 && !job.dates[1] && (
+                      <span class="now-badge">
+                        <span class="pulse-dot" /> Now
+                      </span>
+                    )}
+                  </div>
+                  <p class="job-company">
+                    {job.links?.[0] ? (
+                      <a href={job.links[0].url} target="_blank" rel="noopener noreferrer">
+                        {job.company}
+                      </a>
+                    ) : (
+                      job.company
+                    )}
+                    <span> · {job.location}</span>
+                  </p>
+                  <Description content={job.description} classList={['job-description']} />
+                  <ul class="chip-list">
+                    {job.tagsList?.tags.map((tag) => (
+                      <li>{tag.name}</li>
+                    ))}
+                  </ul>
+                </div>
+                <span class="job-dates">{range(job.dates)}</span>
+              </li>
+            ))
+          }
+        </ol>
+        <a class="mono-link" href={main.action?.url} download={main.action?.downloadedFileName}>
+          Full CV as PDF <Icon name="ri:download-2-line" size={14} />
+        </a>
+      </div>
+    </section>
+
+    <!-- 04 ABOUT -->
+    <section id="about" class="section section-tinted">
+      <div class="shell">
+        <SectionHeader
+          number="04"
+          eyebrow="A little about me"
+          title="Developer’s mindset,"
+          accent="human perspective."
+        />
+        <div class="about-grid">
+          <div class="about-copy reveal">
+            <p>
+              I enjoy making complicated things feel simple. My work brings together thoughtful interfaces, reliable
+              systems, and a curiosity about how people actually use technology.
+            </p>
+            <p>
+              Today I lead a small team at {currentJob.company}, building a digital signage ecosystem end to end. Based
+              in Salerno, I’m also pursuing a master’s in Data Science at the University of Naples Federico II.
+            </p>
+            <dl class="fact-list">
+              <div><dt>Based in</dt><dd>Salerno, Italy · CET</dd></div>
+              <div><dt>Languages</dt><dd>English (C1) · Urdu · Sindhi</dd></div>
+              <div><dt>Focus</dt><dd>Full stack · Data</dd></div>
+            </dl>
+          </div>
+          <ol class="edu-list">
+            {
+              education.diplomas.map((diploma, index) => (
+                <li class="reveal" style={`--delay: ${index * 80}ms`}>
+                  <span class="mono-label">{range(diploma.dates)}</span>
+                  <h3>{diploma.title}</h3>
+                  <p class="edu-school">{diploma.institution}</p>
+                  <p>{diploma.description}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 TESTIMONIALS -->
+    <section id="testimonials" class="section">
+      <div class="shell">
+        <SectionHeader
+          number="05"
+          eyebrow="Kind words"
+          title="What people"
+          accent="say."
+          subtitle="A few notes from clients and teammates I’ve worked with."
+          count={pad(testimonials.testimonials.length)}
+          countLabel="Testimonials"
+        />
+        <div class="quote-grid">
+          {
+            testimonials.testimonials.map((t, index) => (
+              <figure class="quote-card reveal" style={`--delay: ${index * 80}ms`}>
+                <span class="quote-index">{pad(index + 1, 3)}</span>
+                <blockquote>“{t.content}”</blockquote>
+                <figcaption>
+                  <Photo src={t.image!} alt="" width={44} height={44} />
+                  <span>
+                    <strong>{t.author}</strong>
+                    <small>{t.relation}</small>
+                  </span>
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 CONTACT -->
+    <section id="contact" class="section section-tinted">
+      <div class="shell">
+        <SectionHeader
+          number="06"
+          eyebrow="Let’s work together"
+          title="Get in"
+          accent="touch."
+          subtitle="Have a project in mind or just want to say hello? I’m always open to new opportunities and ideas."
+        />
+        <div class="contact-grid">
+          <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
+            <input type="hidden" name="form-name" value="contact" />
+            <p class="honeypot">
+              <label>Leave this empty <input name="company" tabindex="-1" autocomplete="off" /></label>
+            </p>
+            <div class="field-row">
+              <label class="field"
+                ><span>First name</span><input
+                  name="first-name"
+                  autocomplete="given-name"
+                  required
+                  placeholder="Jane"
+                /></label
+              >
+              <label class="field"
+                ><span>Last name</span><input name="last-name" autocomplete="family-name" placeholder="Doe" /></label
+              >
+            </div>
+            <label class="field"
+              ><span>Email</span><input
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+                placeholder="jane@company.com"
+              /></label
+            >
+            <label class="field"><span>Subject</span><input name="subject" placeholder="Project discussion" /></label>
+            <label class="field"
+              ><span>Message</span><textarea
+                name="message"
+                rows="5"
+                required
+                placeholder="Tell me about your project or idea…"></textarea></label
+            >
+            <button class="btn btn-solid" type="submit"
+              >Send message <Icon name="ri:send-plane-line" size={17} /></button
+            >
+            <p class="mono-label form-note">Your details are only used to reply to you.</p>
+          </form>
+
+          <aside class="contact-panel reveal" style="--delay: 120ms">
+            <dl class="fact-list">
+              <div><dt>Status</dt><dd><span class="pulse-dot"></span> Available for work</dd></div>
+              <div><dt>Response time</dt><dd>&lt; 24 hours</dd></div>
+              <div><dt>Timezone</dt><dd>CET · UTC+1</dd></div>
+              <div><dt>Work type</dt><dd>Remote · Freelance · Full-time</dd></div>
+            </dl>
+            <p class="mono-label">Or reach me directly</p>
+            <a class="direct-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          </aside>
+        </div>
+      </div>
+    </section>
   </main>
-  <img
-    src="/footer-gradient.svg"
-    alt="Footer Gradient"
-    class="pointer-events-none absolute bottom-0 w-full select-none"
-  />
-  <script src="../web/scripts/initialize-tooltips.ts"></script>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <p class="footer-display" aria-hidden="true">Let’s build <span class="accent-serif">together.</span></p>
+      <div class="footer-grid">
+        <div class="footer-about">
+          <strong>{main.fullName}</strong>
+          <p>{currentJob.role} building fast, accessible products. Based in Salerno, working with teams everywhere.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <p class="mono-label">Navigate</p>
+          <ul>
+            {
+              navItems.map((item) => (
+                <li>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <div>
+          <p class="mono-label">Connect</p>
+          <ul>
+            {
+              main.links.map((link) => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+            <li><a href={`mailto:${EMAIL}`}>Email</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© {new Date().getFullYear()} {main.fullName}</span>
+        <span>Built with Astro</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
 </Layout>
+
+<script>
+  // Theme toggle
+  const button = document.querySelector<HTMLButtonElement>('#theme-toggle');
+  const syncTheme = () => {
+    const dark = document.documentElement.classList.contains('dark');
+    button?.setAttribute('aria-pressed', String(dark));
+    button?.setAttribute('aria-label', `Switch to ${dark ? 'light' : 'dark'} theme`);
+  };
+  syncTheme();
+  button?.addEventListener('click', () => {
+    const dark = document.documentElement.classList.toggle('dark');
+    try {
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    } catch {}
+    syncTheme();
+  });
+
+  // Mobile menu
+  const menuButton = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-menu');
+  const setMenu = (open: boolean, restoreFocus = false) => {
+    if (!menuButton || !menu) return;
+    menu.hidden = !open;
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.documentElement.classList.toggle('menu-open', open);
+    if (open) menu.querySelector<HTMLAnchorElement>('a')?.focus();
+    else if (restoreFocus) menuButton.focus();
+  };
+  menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu && !menu.hidden) setMenu(false, true);
+  });
+  window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+    if (event.matches) setMenu(false);
+  });
+
+  // Header border once scrolled
+  const header = document.querySelector('.site-header');
+  const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Active nav link
+  const links = document.querySelectorAll<HTMLAnchorElement>('.site-header nav a');
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((link) =>
+          link.hash === `#${entry.target.id}`
+            ? link.setAttribute('aria-current', 'location')
+            : link.removeAttribute('aria-current')
+        );
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px' }
+  );
+  document.querySelectorAll('main section[id]').forEach((section) => navObserver.observe(section));
+
+  // Reveal on scroll (content stays visible without JS or with reduced motion)
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('motion');
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -8% 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+  }
+
+  // Skill filter
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.filter-tab');
+  const tiles = document.querySelectorAll<HTMLElement>('.skill-tile');
+  tabs.forEach((tab) =>
+    tab.addEventListener('click', () => {
+      const filter = tab.dataset.filter;
+      tabs.forEach((t) => t.setAttribute('aria-pressed', String(t === tab)));
+      tiles.forEach((tile) => {
+        tile.hidden = filter !== 'all' && tile.dataset.group !== filter;
+      });
+    })
+  );
+</script>

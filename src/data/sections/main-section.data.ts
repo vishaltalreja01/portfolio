@@ -15,7 +15,7 @@ const mainSectionData = {
   details: [
     { label: 'Phone', value: '+39 353 212 4142', url: 'tel:+393532124142' },
     { label: 'Email', value: 'vishaltalreja01@gmail.com', url: 'mailto:vishaltalreja01@gmail.com' },
-    { label: 'From', value: 'Naples, Italy' },
+    { label: 'From', value: 'Salerno, Italy' },
     // { label: 'Salary range', value: '18 000 - 25 000 PLN' },
   ],
   pdfDetails: [
