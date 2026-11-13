@@ -53,14 +53,30 @@ const skillGroups: { id: string; label: string; skills: readonly SkillTile[] }[]
   {
     id: 'frontend',
     label: 'Frontend',
-    skills: [react(), nextJs(), astro(), typescript(), javascript(), html(), css(), tailwindCss(), materialUI(), chakraUi()],
+    skills: [
+      react(),
+      nextJs(),
+      astro(),
+      typescript(),
+      javascript(),
+      html(),
+      css(),
+      tailwindCss(),
+      materialUI(),
+      chakraUi(),
+    ],
   },
   { id: 'backend', label: 'Backend', skills: [nestJs(), php(), strapi(), prisma(), oracleApex()] },
   { id: 'database', label: 'Database', skills: [postgreSql(), sql(), mysql(), oracle(), supabase()] },
   {
     id: 'devops',
     label: 'DevOps & Tools',
-    skills: [docker(), kubernetes(), { name: 'Git', icon: 'simple-icons:git' }, { name: 'Linux', icon: 'simple-icons:linux' }],
+    skills: [
+      docker(),
+      kubernetes(),
+      { name: 'Git', icon: 'simple-icons:git' },
+      { name: 'Linux', icon: 'simple-icons:linux' },
+    ],
   },
 ];
 const allSkills = skillGroups.flatMap((group) => group.skills.map((skill) => ({ ...skill, group: group.id })));
@@ -80,19 +96,84 @@ const navItems = [
   <header class="site-header">
     <div class="shell site-header-inner">
       <a class="wordmark" href="#top" aria-label={`${main.fullName}, back to top`}>vk<span>.</span></a>
-      <nav aria-label="Main navigation">
+      <nav class="desktop-nav" aria-label="Main navigation">
         {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
       </nav>
-      <button id="theme-toggle" class="icon-button" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"
-          ><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"></path></svg
+      <div class="header-actions">
+        <button
+          id="theme-toggle"
+          class="icon-button"
+          type="button"
+          aria-label="Switch to dark theme"
+          aria-pressed="false"
         >
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"
-          ><circle cx="12" cy="12" r="4"></circle><path
-            d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
-          ></path></svg
+          <svg
+            class="icon-moon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"></path></svg
+          >
+          <svg
+            class="icon-sun"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.7"
+            aria-hidden="true"
+            ><circle cx="12" cy="12" r="4"></circle><path
+              d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+            ></path></svg
+          >
+        </button>
+        <button
+          id="menu-toggle"
+          class="icon-button menu-button"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
         >
-      </button>
+          <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <nav class="shell" aria-label="Mobile navigation">
+        <ol>
+          {
+            navItems.map((item, index) => (
+              <li style={`--i: ${index}`}>
+                <a href={item.href}>
+                  <span class="mobile-menu-index">{pad(index + 1)}</span>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+      <div class="shell mobile-menu-footer">
+        <p class="mono-label">Get in touch</p>
+        <a class="direct-email" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        <ul>
+          {
+            main.links.map((link) => (
+              <li>
+                <a class="social-box" href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
+                  <Icon name={link.icon} size={17} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -127,7 +208,13 @@ const navItems = [
               {
                 main.links.map((link) => (
                   <li>
-                    <a class="social-box" href={link.url} target="_blank" rel="noopener noreferrer" aria-label={link.name}>
+                    <a
+                      class="social-box"
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.name}
+                    >
                       <Icon name={link.icon} size={17} />
                     </a>
                   </li>
@@ -140,7 +227,14 @@ const navItems = [
         <div class="hero-visual reveal" style="--delay: 120ms">
           <div class="portrait">
             <span class="portrait-offset" aria-hidden="true"></span>
-            <Photo src={main.image!} alt={main.fullName} loading="eager" width={560} height={680} class="portrait-img" />
+            <Photo
+              src={main.image!}
+              alt={main.fullName}
+              loading="eager"
+              width={560}
+              height={680}
+              class="portrait-img"
+            />
             <span class="portrait-caption">Salerno, Italy</span>
           </div>
           <div class="stat-card stat-top">
@@ -226,26 +320,25 @@ const navItems = [
           subtitle="The toolkit I reach for to build reliable, accessible and maintainable products."
           count={allSkills.length}
           countLabel="Technologies"
+          breakdown={skillGroups.map((group) => ({ label: group.label, count: group.skills.length }))}
         />
-      </div>
 
-      <div class="marquee" aria-hidden="true">
-        <div class="marquee-track">
-          {
-            [0, 1].map(() => (
-              <ul>
-                {allSkills.map((skill) => (
-                  <li>
-                    <Icon name={skill.icon} size={15} /> {skill.name}
-                  </li>
-                ))}
-              </ul>
-            ))
-          }
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            {
+              [0, 1].map(() => (
+                <ul>
+                  {allSkills.map((skill) => (
+                    <li>
+                      <Icon name={skill.icon} size={15} /> {skill.name}
+                    </li>
+                  ))}
+                </ul>
+              ))
+            }
+          </div>
         </div>
-      </div>
 
-      <div class="shell">
         <div class="filter-tabs reveal" role="group" aria-label="Filter skills by category">
           <button type="button" class="filter-tab" data-filter="all" aria-pressed="true">
             All <sup>{allSkills.length}</sup>
@@ -330,7 +423,12 @@ const navItems = [
     <!-- 04 ABOUT -->
     <section id="about" class="section section-tinted">
       <div class="shell">
-        <SectionHeader number="04" eyebrow="A little about me" title="Developer’s mindset," accent="human perspective." />
+        <SectionHeader
+          number="04"
+          eyebrow="A little about me"
+          title="Developer’s mindset,"
+          accent="human perspective."
+        />
         <div class="about-grid">
           <div class="about-copy reveal">
             <p>
@@ -338,8 +436,8 @@ const navItems = [
               systems, and a curiosity about how people actually use technology.
             </p>
             <p>
-              Today I lead a small team at {currentJob.company}, building a digital signage ecosystem end to end. Based in
-              Salerno, I’m also pursuing a master’s in Data Science at the University of Naples Federico II.
+              Today I lead a small team at {currentJob.company}, building a digital signage ecosystem end to end. Based
+              in Salerno, I’m also pursuing a master’s in Data Science at the University of Naples Federico II.
             </p>
             <dl class="fact-list">
               <div><dt>Based in</dt><dd>Salerno, Italy · CET</dd></div>
@@ -408,15 +506,42 @@ const navItems = [
         <div class="contact-grid">
           <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" netlify-honeypot="company">
             <input type="hidden" name="form-name" value="contact" />
-            <p class="honeypot"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off" /></label></p>
+            <p class="honeypot">
+              <label>Leave this empty <input name="company" tabindex="-1" autocomplete="off" /></label>
+            </p>
             <div class="field-row">
-              <label class="field"><span>First name</span><input name="first-name" autocomplete="given-name" required placeholder="Jane" /></label>
-              <label class="field"><span>Last name</span><input name="last-name" autocomplete="family-name" placeholder="Doe" /></label>
+              <label class="field"
+                ><span>First name</span><input
+                  name="first-name"
+                  autocomplete="given-name"
+                  required
+                  placeholder="Jane"
+                /></label
+              >
+              <label class="field"
+                ><span>Last name</span><input name="last-name" autocomplete="family-name" placeholder="Doe" /></label
+              >
             </div>
-            <label class="field"><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="jane@company.com" /></label>
+            <label class="field"
+              ><span>Email</span><input
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+                placeholder="jane@company.com"
+              /></label
+            >
             <label class="field"><span>Subject</span><input name="subject" placeholder="Project discussion" /></label>
-            <label class="field"><span>Message</span><textarea name="message" rows="5" required placeholder="Tell me about your project or idea…"></textarea></label>
-            <button class="btn btn-solid" type="submit">Send message <Icon name="ri:send-plane-line" size={17} /></button>
+            <label class="field"
+              ><span>Message</span><textarea
+                name="message"
+                rows="5"
+                required
+                placeholder="Tell me about your project or idea…"></textarea></label
+            >
+            <button class="btn btn-solid" type="submit"
+              >Send message <Icon name="ri:send-plane-line" size={17} /></button
+            >
             <p class="mono-label form-note">Your details are only used to reply to you.</p>
           </form>
 
@@ -445,12 +570,28 @@ const navItems = [
         </div>
         <nav aria-label="Footer navigation">
           <p class="mono-label">Navigate</p>
-          <ul>{navItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul>
+          <ul>
+            {
+              navItems.map((item) => (
+                <li>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))
+            }
+          </ul>
         </nav>
         <div>
           <p class="mono-label">Connect</p>
           <ul>
-            {main.links.map((link) => <li><a href={link.url} target="_blank" rel="noopener noreferrer">{link.name}</a></li>)}
+            {
+              main.links.map((link) => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer">
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
             <li><a href={`mailto:${EMAIL}`}>Email</a></li>
           </ul>
         </div>
@@ -479,6 +620,27 @@ const navItems = [
       localStorage.setItem('theme', dark ? 'dark' : 'light');
     } catch {}
     syncTheme();
+  });
+
+  // Mobile menu
+  const menuButton = document.querySelector<HTMLButtonElement>('#menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-menu');
+  const setMenu = (open: boolean, restoreFocus = false) => {
+    if (!menuButton || !menu) return;
+    menu.hidden = !open;
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.documentElement.classList.toggle('menu-open', open);
+    if (open) menu.querySelector<HTMLAnchorElement>('a')?.focus();
+    else if (restoreFocus) menuButton.focus();
+  };
+  menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu && !menu.hidden) setMenu(false, true);
+  });
+  window.matchMedia('(min-width: 901px)').addEventListener('change', (event) => {
+    if (event.matches) setMenu(false);
   });
 
   // Header border once scrolled

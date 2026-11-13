@@ -7,9 +7,10 @@ export interface Props {
   subtitle?: string;
   count?: number | string;
   countLabel?: string;
+  breakdown?: { label: string; count: number }[];
 }
 
-const { number, eyebrow, title, accent, subtitle, count, countLabel } = Astro.props;
+const { number, eyebrow, title, accent, subtitle, count, countLabel, breakdown } = Astro.props;
 ---
 
 <header class="section-header reveal">
@@ -22,13 +23,26 @@ const { number, eyebrow, title, accent, subtitle, count, countLabel } = Astro.pr
     {subtitle && <p class="lede">{subtitle}</p>}
   </div>
   <div class="section-header-meta" aria-hidden={count === undefined ? 'true' : undefined}>
-    <span class="ghost-number" aria-hidden="true">{number}</span>
+    <div class="section-meta-main">
+      <span class="ghost-number" aria-hidden="true">{number}</span>
+      {
+        count !== undefined && (
+          <p class="section-count">
+            <strong>{count}</strong>
+            <span>{countLabel}</span>
+          </p>
+        )
+      }
+    </div>
     {
-      count !== undefined && (
-        <p class="section-count">
-          <strong>{count}</strong>
-          <span>{countLabel}</span>
-        </p>
+      breakdown && breakdown.length > 0 && (
+        <ul class="section-breakdown">
+          {breakdown.map((item) => (
+            <li>
+              {item.label} <span>({item.count})</span>
+            </li>
+          ))}
+        </ul>
       )
     }
   </div>
